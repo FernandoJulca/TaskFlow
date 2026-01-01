@@ -54,6 +54,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.material3.android)
 
     val composeBom = platform("androix.compose:compose-bom:2024.02.00")
     implementation(composeBom)
@@ -87,6 +89,9 @@ dependencies {
 
     // WorkManager (para notificaciones)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // Material Icons Extended
+    implementation("androidx.compose.material:material-icons-extended:1.6.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
