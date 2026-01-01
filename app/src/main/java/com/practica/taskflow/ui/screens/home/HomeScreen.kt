@@ -149,7 +149,7 @@ fun HomeScreen(
                     onCheckChange = { task, isChecked ->
                         viewModel.updateCompletedTask(task.id, isChecked)
                     },
-                    onMenuClick = { /* TODO: Menú opciones */ }
+                    onDeleteTask = { task -> viewModel.deleteTask(task) }
                 )
             }
         }
@@ -279,9 +279,10 @@ private fun TaskList(
     categories: List<Category>,
     onTaskClick: (Task) -> Unit,
     onCheckChange: (Task, Boolean) -> Unit,
-    onMenuClick: (Task) -> Unit,
+    onDeleteTask: (Task) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var taskToDelete by remember { mutableStateOf<Task?>(null) }
     LazyColumn(
         modifier = modifier.fillMaxSize()
     ) {
@@ -297,7 +298,7 @@ private fun TaskList(
                 } ?: MaterialTheme.colorScheme.primary,
                 onTaskClick = { onTaskClick(task) },
                 onCheckChange = { isChecked -> onCheckChange(task, isChecked) },
-                onMenuClick = { onMenuClick(task) }
+                onDeleteClick = { taskToDelete = task }
             )
         }
     }

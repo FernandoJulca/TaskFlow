@@ -17,6 +17,7 @@ import com.practica.taskflow.data.local.entities.Category
 import com.practica.taskflow.data.local.entities.Priority
 import com.practica.taskflow.data.local.entities.Task
 import com.practica.taskflow.data.repository.TaskRepository
+import com.practica.taskflow.ui.TaskFlowNavigation
 import com.practica.taskflow.ui.screens.home.HomeScreen
 import com.practica.taskflow.ui.theme.TaskFlowTheme
 import com.practica.taskflow.viewmodel.TaskViewModel
@@ -43,6 +44,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        insertSampleData()
         setContent {
             TaskFlowTheme {
                 Surface(
@@ -56,12 +59,14 @@ class MainActivity : ComponentActivity() {
                         },
                         onAddTaskClick = {
                             println("Click en agregar tarea")
+
                         }
                     )
+                    TaskFlowNavigation(viewModel = viewModel)
                 }
             }
         }
-        insertSampleData()
+
     }
 
     private fun insertSampleData() {
