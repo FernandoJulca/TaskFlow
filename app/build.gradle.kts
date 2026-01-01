@@ -43,21 +43,19 @@ android {
         kotlinCompilerExtensionVersion = "1.5.8"
     }
 
+
 }
-
 dependencies {
+    // Core Android (versiones estables)
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
+    // Material Design 3
+    implementation("com.google.android.material:material:1.11.0")
 
-    val composeBom = platform("androix.compose:compose-bom:2024.02.00")
+    // Compose BOM
+    val composeBom = platform("androidx.compose:compose-bom:2024.02.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -67,6 +65,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.compose.material:material-icons-extended:1.6.1")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     // Lifecycle & ViewModel
@@ -81,19 +80,16 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
-    // Para usar ksp en lugar de kapt (más rápido)
-    // ksp("androidx.room:room-compiler:$roomVersion")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // WorkManager (para notificaciones)
+    // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    // Material Icons Extended
-    implementation("androidx.compose.material:material-icons-extended:1.6.1")
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 }
